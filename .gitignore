@@ -1,0 +1,14 @@
+# Build Output
+[Oo]bj/
+[Bb]in/
+
+# IDE Files
+.idea/
+.vs/
+.nuget/
+_ReSharper.*
+
+*.user
+*.suo
+*.userprefs
+*.sln.ide
