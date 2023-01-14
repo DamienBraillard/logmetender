@@ -11,6 +11,25 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center" />
-
+    <TabControl Items="{Binding OpenedSources}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <TabControl.ItemTemplate>
+            <DataTemplate x:Class="vm:LogSourceViewModel">
+              <DockPanel LastChildFill="True">
+                <Button DockPanel.Dock="Right" 
+                        Width="{Binding Bounds.Height, RelativeSource={RelativeSource Self}}"
+                        Background="Transparent"
+                        BorderBrush="Transparent"
+                        VerticalAlignment="Stretch"
+                        Margin="10,0,0,0"
+                        Command="{Binding $parent[TabControl].DataContext.CloseSourceCommand}"
+                        CommandParameter="{Binding}">
+                  <Path Data="M0,0 L8,8 M0,8 L8,0" Stroke="{Binding Foreground, RelativeSource={RelativeSource AncestorType={x:Type Button}}}" StrokeThickness="2" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                </Button>
+                <Border>
+                  <TextBlock Classes="tabTitle" Text="{Binding ShortName}" ToolTip.Tip="{Binding Name}" VerticalAlignment="Center" />
+                </Border>
+              </DockPanel>
+            </DataTemplate>
+        </TabControl.ItemTemplate>
+    </TabControl>
 </Window>

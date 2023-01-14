@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <ApplicationIcon>Assets\icon.ico</ApplicationIcon>
@@ -14,8 +14,13 @@
     <AvaloniaResource Include="Assets\**" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Avalonia" Version="0.9.0" />
-    <PackageReference Include="Avalonia.Desktop" Version="0.9.0" />
-    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.0" />
+    <PackageReference Include="Avalonia" Version="0.9.9" />
+    <PackageReference Include="Avalonia.Controls.DataGrid" Version="0.9.9" />
+    <PackageReference Include="Avalonia.Desktop" Version="0.9.9" />
+    <PackageReference Include="Avalonia.ReactiveUI" Version="0.9.9" />
+    <PackageReference Include="System.Interactive.Async" Version="4.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LogMeTender.Logging\LogMeTender.Logging.csproj" />
   </ItemGroup>
 </Project>

@@ -17,11 +17,12 @@ namespace LogMeTender.Views
         public MainWindow()
         {
             AvaloniaXamlLoader.Load(this);
+            this.WhenActivated(d => { });
 
-            this.WhenActivated(disposables => { });
 #if DEBUG
             this.AttachDevTools();
 #endif
+            
         }
     }
 }

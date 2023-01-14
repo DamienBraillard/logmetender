@@ -7,7 +7,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\src\LogMeTender.Logging\LogMeTender.Logging.csproj" />
-    <ProjectReference Include="..\..\src\LogMeTender\LogMeTender.csproj" />
-    <ProjectReference Include="..\LogMeTender.TestUtils\LogMeTender.TestUtils.csproj" />
   </ItemGroup>
 </Project>

@@ -1,0 +1,58 @@
+﻿<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ext="clr-namespace:LogMeTender.Extensions"
+             xmlns:conv="clr-namespace:LogMeTender.Converters"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="LogMeTender.Views.LogSourceView">
+    <UserControl.Resources>
+        <conv:LogEntryLevelForegroundConverter x:Key="LogEntryLevelForegroundConverter" />
+    </UserControl.Resources>
+    <Border BorderThickness="1" BorderBrush="Black" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+        <DataGrid
+            x:Name="LogEntriesDataGrid"
+            Items="{Binding LogEntries}"
+            SelectedItem="{Binding SelectedLogEntry}"
+            VerticalAlignment="Stretch"
+            HorizontalAlignment="Stretch"
+            CanUserResizeColumns="True"
+            CanUserSortColumns="True"
+            RowBackground="Transparent"
+            CanUserSortColumns="False"
+            AlternatingRowBackground="Transparent"
+            IsReadOnly="True">
+            <DataGrid.Styles>
+                <Style Selector="DataGridCell">
+                    <Setter Property="Foreground"
+                            Value="{Binding Path=Level, Mode=OneWay, Converter={StaticResource LogEntryLevelForegroundConverter}}" />
+                    <Setter Property="Background" Value="Transparent" />
+                </Style>
+                <Style Selector="DataGridRow /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="IsVisible" Value="False" />
+                    <Setter Property="Fill" Value="Transparent" />
+                    <Setter Property="Stroke" Value="{DynamicResource ThemeBorderHighBrush}" />
+                    <Setter Property="StrokeThickness" Value="2" />
+                </Style>
+                <Style Selector="DataGridRow:pointerover /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="IsVisible" Value="True" />
+                    <Setter Property="StrokeThickness" Value="1" />
+                    <Setter Property="Opacity" Value="0.3" />
+                </Style>
+                <Style Selector="DataGridRow:selected /template/ Rectangle#BackgroundRectangle">
+                    <Setter Property="IsVisible" Value="True" />
+                    <Setter Property="Opacity" Value="1" />
+                </Style>
+            </DataGrid.Styles>
+
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="{ext:Translate #}" Binding="{Binding EntryNumber}" Width="40" />
+                <DataGridTextColumn Header="{ext:Translate Time}" Binding="{Binding TimeStamp, StringFormat=\{0:g\}}"
+                                    Width="140" />
+                <DataGridTextColumn Header="{ext:Translate Level}" Binding="{Binding Level}" Width="80" />
+                <DataGridTextColumn Header="{ext:Translate Source}" Binding="{Binding Source}" Width="1*" />
+                <DataGridTextColumn Header="{ext:Translate Message}" Binding="{Binding Message}" Width="2*" />
+            </DataGrid.Columns>
+        </DataGrid>
+    </Border>
+</UserControl>
